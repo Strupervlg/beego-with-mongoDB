@@ -19,4 +19,7 @@ func init() {
 	beego.Router("/delete/:id", &controllers.MoviesController{}, "post:Delete")
 	beego.Router("/:id", &controllers.MoviesController{}, "get:GetUpdate")
 	beego.Router("/:id", &controllers.MoviesController{}, "post:Update")
+	beego.Router("/genres", &controllers.MoviesController{}, "get:MoviesGroupedByGenres")
+	beego.Router("/directors", &controllers.MoviesController{}, "get:MoviesGroupedByDirector")
+	beego.Router("/", &controllers.MoviesController{}, "post:GetBetweenRating")
 }

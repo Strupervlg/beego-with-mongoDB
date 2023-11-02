@@ -16,8 +16,8 @@
             <input id="director" required type="text" name="director" value="{{.Movie.Director}}">
         </div>
         <div>
-            <label for="date">Дата</label>
-            <input id="date" required type="date" name="date" value="{{.Movie.Date}}">
+            <label for="releasedYear">Год релиза</label>
+            <input id="releasedYear" required type="number" name="releasedYear" value="{{.Movie.ReleasedYear}}">
         </div>
         <div>
             <label for="rating">Рейтинг</label>

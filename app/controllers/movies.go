@@ -30,12 +30,16 @@ func (c *MoviesController) Create() {
 	if err != nil {
 		fmt.Println(err)
 	}
+	releasedYear, err := c.GetInt("releasedYear")
+	if err != nil {
+		fmt.Println(err)
+	}
 	movie := models.Movie{
-		Title:    c.GetString("title"),
-		Director: c.GetString("director"),
-		Date:     c.GetString("date"),
-		Rating:   rating,
-		Genre:    c.GetStrings("genre[]"),
+		Title:        c.GetString("title"),
+		Director:     c.GetString("director"),
+		ReleasedYear: releasedYear,
+		Rating:       rating,
+		Genre:        c.GetStrings("genre[]"),
 	}
 	models.Create(movie)
 	c.Redirect("/", 302)
@@ -52,13 +56,50 @@ func (c *MoviesController) Update() {
 	if err != nil {
 		fmt.Println(err)
 	}
+	releasedYear, err := c.GetInt("releasedYear")
+	if err != nil {
+		fmt.Println(err)
+	}
 	movie := models.Movie{
-		Title:    c.GetString("title"),
-		Director: c.GetString("director"),
-		Date:     c.GetString("date"),
-		Rating:   rating,
-		Genre:    c.GetStrings("genre[]"),
+		Title:        c.GetString("title"),
+		Director:     c.GetString("director"),
+		ReleasedYear: releasedYear,
+		Rating:       rating,
+		Genre:        c.GetStrings("genre[]"),
 	}
 	models.Update(c.Ctx.Input.Param(":id"), movie)
 	c.Redirect("/", 302)
+}
+
+//Сделать обычный show
+
+// Кол-во фильмов каждого жанра
+func (c *MoviesController) MoviesGroupedByGenres() {
+	records := models.GroupedByGenres()
+	c.Data["Items"] = records
+	c.TplName = "movies/genres.tpl"
+}
+
+// Кол-во фильмов каждого режиссера (можно вывести фильмы и кол-во их)
+func (c *MoviesController) MoviesGroupedByDirector() {
+	records := models.GroupedByDirector()
+	c.Data["Items"] = records
+	c.TplName = "movies/genres.tpl"
+}
+
+// Фильмы больше заданного рейтинга (сделать ползунок мин, макс)
+// Кол-во фильмов после заданного года (сделать ползунок мин макс) (Можно вывести фильмы и их кол-во)
+func (c *MoviesController) GetBetweenRating() {
+	minRating, _ := c.GetFloat("min_rating")
+	maxRating, _ := c.GetFloat("max_rating")
+	minYear, _ := c.GetInt("min_year")
+	maxYear, _ := c.GetInt("max_year")
+	fmt.Println(c.GetInt("min_year"))
+	records := models.GetBetweenRating(minRating, maxRating, minYear, maxYear)
+	c.Data["Items"] = records
+	c.Data["MinRating"] = minRating
+	c.Data["MaxRating"] = maxRating
+	c.Data["MinYear"] = minYear
+	c.Data["MaxYear"] = maxYear
+	c.TplName = "movies/index.tpl"
 }
