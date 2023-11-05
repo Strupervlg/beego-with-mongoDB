@@ -71,7 +71,12 @@ func (c *MoviesController) Update() {
 	c.Redirect("/", 302)
 }
 
-//Сделать обычный show
+// Сделать обычный show
+func (c *MoviesController) Show() {
+	movie := models.FindOne(c.Ctx.Input.Param(":id"))
+	c.Data["Movie"] = movie
+	c.TplName = "movies/show.tpl"
+}
 
 // Кол-во фильмов каждого жанра
 func (c *MoviesController) MoviesGroupedByGenres() {

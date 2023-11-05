@@ -28,7 +28,7 @@
 </div>
 <ul>
     {{range .Items}}
-    <li>{{.title}} {{.rating}} <a href="/{{._id}}/">Изменить</a> <form method="post" style="display: inline-block" action="/delete/{{._id}}/"><button style="display: inline-block" type="submit">Удалить</button></form></li>
+    <li><a href="/{{._id}}/show/">{{.title}}</a> {{.rating}} <a href="/{{._id}}/">Изменить</a> <form method="post" style="display: inline-block" action="/delete/{{._id}}/"><button style="display: inline-block" type="submit">Удалить</button></form></li>
     {{end}}
 </ul>
 <a href="/create/">Создать</a>

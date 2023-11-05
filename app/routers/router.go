@@ -22,4 +22,5 @@ func init() {
 	beego.Router("/genres", &controllers.MoviesController{}, "get:MoviesGroupedByGenres")
 	beego.Router("/directors", &controllers.MoviesController{}, "get:MoviesGroupedByDirector")
 	beego.Router("/", &controllers.MoviesController{}, "post:GetBetweenRating")
+	beego.Router("/:id/show", &controllers.MoviesController{}, "get:Show")
 }
