@@ -1,15 +1,16 @@
 <html lang="ru">
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <link rel="stylesheet" href="/static/css/main.css">
     <title>movies</title>
 </head>
-<body>
-<h1>Список фильмов</h1>
+<body class="main">
+<h1 style="text-align: center"><a href="/">Список фильмов</a></h1>
 {{range .Items}}
-<h2 class="movies" style="cursor: pointer" data-id="{{._id}}">{{._id}} ({{.count}})</h2>
-<ul id="{{._id}}" style="display: none">
+<h2 class="movies" style="cursor: pointer; text-align: center; font-weight: 900; font-size: 28px" data-id="{{._id}}">{{._id}} ({{.count}})</h2>
+<ul id="{{._id}}" style="display: none; list-style: none; padding-left: 0; text-align: center; font-size: 20px">
 {{range .movies}}
-<li>{{.}}</li>
+<li style="margin-bottom: 10px">{{.}}</li>
 {{end}}
 </ul>
 {{end}}

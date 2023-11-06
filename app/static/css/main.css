@@ -1,0 +1,51 @@
+.table {
+    margin-left: auto;
+    margin-right: auto;
+    width: 75%;
+}
+
+.center-col {
+    text-align: center;
+}
+
+.main {
+    background: #444444;
+    color: white;
+}
+
+.input {
+    background: #999999;
+    color: white;
+    font-size: 20px;
+}
+
+.noUi-connects {
+    background: #999999;
+}
+
+.noUi-connect {
+    background: #333333;
+}
+
+a {
+    color: white;
+    font-weight: bold;
+}
+
+.btn {
+    background: #333333;
+    color: white;
+    text-decoration-line: none;
+    padding: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.lbl {
+    font-size: 24px;
+}
+
+.input-group {
+    margin-bottom: 10px;
+}
